@@ -14,11 +14,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   nitro: {
     preset: 'github_pages',
-    prerender: {
-      routes: ['/', '/en', '/ru'],
-      crawlLinks: true,
-      failOnError: false,
-    },
   },
   i18n: {
     locales: [
