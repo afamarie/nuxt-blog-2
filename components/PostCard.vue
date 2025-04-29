@@ -4,7 +4,7 @@
     :to="{ name: 'posts-id', params: { id: post.id } }"
   >
     <UCard as="article">
-      <NuxtPicture :src="post?.image" />
+      <!-- <NuxtPicture :src="post?.image" /> -->
       <template #header>
         {{ post?.title }}
       </template>
