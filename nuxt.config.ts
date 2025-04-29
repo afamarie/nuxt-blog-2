@@ -2,6 +2,7 @@
 
 export default defineNuxtConfig({
   modules: ['@nuxt/ui', '@nuxt/image', '@pinia/nuxt', '@nuxtjs/i18n'],
+  ssr: true,
   components: true,
   devtools: { enabled: true },
   app: {
@@ -13,9 +14,9 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-11-01',
   nitro: {
-    preset: 'static',
+    preset: 'github_pages',
     prerender: {
-      routes: ['/', '/en', '/ru'],
+      routes: ['/en', '/'],
     },
   },
   i18n: {
@@ -23,9 +24,8 @@ export default defineNuxtConfig({
       { code: 'en', language: 'en-US', name: 'English' },
       { code: 'ru', language: 'ru-RU', name: 'Русский' },
     ],
-    lazy: true,
-    strategy: 'prefix',
     defaultLocale: 'ru',
+    strategy: 'prefix_except_default',
   },
   icon: {
     customCollections: [

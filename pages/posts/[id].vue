@@ -11,5 +11,5 @@
 import type { Post } from '~/types'
 
 const id = useRoute().params.id
-// const { data: post } = await useLazyFetch<Post>(`/api/posts/${id}`)
+const { data: post } = await useLazyFetch<Post>(`/api/posts/${id}`)
 </script>

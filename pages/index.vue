@@ -28,7 +28,7 @@
 import type { Post } from '~/types'
 
 const postsListRef = ref<HTMLUListElement | null>(null)
-// const { data: posts } = await useLazyFetch<Post[]>('/api/posts/all')
+const { data: posts } = await useLazyFetch<Post[]>('/api/posts/all')
 const page = ref<number>(useRoute().query.page ? Number(useRoute().query.page) : 1)
 const total = posts.value?.length || 0
 const itemsPerPage = 8

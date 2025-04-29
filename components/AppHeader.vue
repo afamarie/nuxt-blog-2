@@ -34,7 +34,6 @@
         <UButton
           as="nuxt-link"
           to="#"
-          @click="$router.push('/register')"
         >
           Register
         </UButton>
