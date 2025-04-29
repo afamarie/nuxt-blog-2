@@ -1,6 +1,7 @@
 import url from '~/server/url'
+import type { Post } from '~/types/index'
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler<Post | unknown>(async (event) => {
   const id = event.context.params?.id
 
   if (!id) {
@@ -11,10 +12,10 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    const post = await $fetch(`${url}${id}`)
+    const post = await $fetch<Post>(`${url}${id}`)
     return post
   }
-  catch (error) {
+  catch {
     throw createError({
       statusCode: 500,
       statusMessage: 'Failed to fetch post',
