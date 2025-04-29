@@ -45,11 +45,7 @@
 
 <script setup lang="ts">
 const { locale, locales, setLocale } = useI18n()
-
-const selectedLocale = computed({
-  get: () => locale.value,
-  set: (value) => setLocale(value),
-})
+const selectedLocale = ref(locale.value)
 
 watch(selectedLocale, (newLocale) => {
   setLocale(newLocale)
