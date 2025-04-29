@@ -2,11 +2,11 @@
   <header class="app-header">
     <UContainer class="flex items-center justify-between">
       <NuxtLink to="#">
-        <NuxtPicture
+        <!-- <NuxtPicture
           src="/images/logo.png"
           width="84"
           height="24"
-        />
+        /> -->
       </NuxtLink>
       <nav class="nav">
         <ul>
