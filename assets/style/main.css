@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@font-face {
+    font-style: normal;
+    font-weight: 400;
+    font-family: 'TT Commons';
+  
+    font-display: swap;
+    src: url('~/assets/fonts/tt-commons-regular.woff2') format('woff2');
+}
+
+@theme {
+    --font-sans: 'TT Commons';
+}

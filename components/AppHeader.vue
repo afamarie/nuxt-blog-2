@@ -56,6 +56,7 @@ const availableLocales = computed(() => {
     return {
       code: locale.code,
       label: locale.name,
+      icon: 'i-custom-' + locale.code,
     }
   })
 })

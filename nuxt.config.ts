@@ -1,14 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-  modules: [
-    '@nuxt/ui',
-    '@nuxt/image',
-    '@pinia/nuxt',
-    '@nuxtjs/i18n',
-  ],
+  modules: ['@nuxt/ui', '@nuxt/image', '@pinia/nuxt', '@nuxtjs/i18n'],
   components: true,
   devtools: { enabled: true },
+  app: {
+    baseURL: '/nuxt-blog/',
+  },
   css: ['~/assets/style/main.css'],
   ui: {
     colorMode: false,
@@ -22,5 +20,13 @@ export default defineNuxtConfig({
     lazy: true,
     strategy: 'prefix',
     defaultLocale: 'ru',
+  },
+  icon: {
+    customCollections: [
+      {
+        prefix: 'custom',
+        dir: './assets/icons',
+      },
+    ],
   },
 })
