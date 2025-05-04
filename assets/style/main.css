@@ -10,6 +10,44 @@
     src: url('~/assets/fonts/tt-commons-regular.woff2') format('woff2');
 }
 
-@theme {
+@theme static {
+    /* Colors */
+    --black: #101010;
+    --lightblack: #232323;
+    --grey: #868686;
+    --lightgrey: #f3f3f3;
+    --mutedgrey: #e8e8e8;
+    --lime: #9effbf;
+    --lilac: #7941a7;
+    --lightlilac: #e2beff;
+    --blue: #1059C8;
+
+    --color-lilac: var(--lilac);
+    --color-lilac-400: var(--lightlilac);
+    --color-lightblack: var(--lightblack);
+    --color-grey: var(--grey);
+    --color-mutedgrey: var(--mutedgrey);
+    --color-lightgrey: var(--lightgrey);
+
+    --ui-primary: var(--black);
+    --ui-success: var(--lime);
+    --ui-info: var(--blue);
+
+    --ui-bg-elevated: var(--lightgrey);
+    --ui-bg-accented: var(--mutedgrey);
+
+    --ui-text: var(--black);
+    --ui-text-muted: var(--lightblack);
+    --ui-text-highlighted: var(--grey);
+    --ui-border: var(--lightgrey);
+
+    /* Sizes */
+    --ui-container: 90rem;
+
+    /* Font */
     --font-sans: 'TT Commons';
+}
+
+:root {
+    scroll-behavior: smooth;
 }

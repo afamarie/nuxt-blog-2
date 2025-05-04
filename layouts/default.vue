@@ -1,23 +1,12 @@
 <template>
-  <div class="default-layout">
+  <div class="default-layout min-h-screen flex flex-col">
     <AppHeader />
-    <main class="app-main">
-      <UContainer>
-        <slot />
-      </UContainer>
-    </main>
+    <UContainer
+      as="main"
+      class="flex-grow pt-6 sm:pt-8 lg:pt-27"
+    >
+      <slot />
+    </UContainer>
     <AppFooter />
   </div>
 </template>
-
-<script setup lang="ts">
-const i18nHead = useLocaleHead()
-
-useHead(() => ({
-  htmlAttrs: {
-    lang: i18nHead.value.htmlAttrs.lang,
-  },
-  link: [...(i18nHead.value.link || [])],
-  meta: [...(i18nHead.value.meta || [])],
-}))
-</script>

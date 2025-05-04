@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-  modules: ['@nuxt/ui', '@nuxt/image', '@pinia/nuxt', '@nuxtjs/i18n'],
+  modules: ['@nuxt/ui', '@nuxt/image', '@nuxtjs/i18n'],
   ssr: true,
   components: true,
   devtools: { enabled: true },
@@ -12,11 +12,26 @@ export default defineNuxtConfig({
   ui: {
     colorMode: false,
   },
+  routeRules: {
+    '/': { prerender: true },
+    '/policy': { static: true },
+    '/_nuxt/**': {
+      headers: {
+        'Cache-Control': 'public, max-age=31536000, immutable',
+        'Content-Type': 'application/javascript',
+      },
+    },
+    '/api/**': {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    },
+  },
   compatibilityDate: '2024-11-01',
   nitro: {
     preset: 'github_pages',
     prerender: {
-      routes: ['/en', '/'],
+      crawlLinks: false,
     },
   },
   i18n: {
@@ -34,5 +49,10 @@ export default defineNuxtConfig({
         dir: './assets/icons',
       },
     ],
+  },
+  image: {
+    inject: true,
+    quality: 80,
+    format: ['webp', 'avif'],
   },
 })

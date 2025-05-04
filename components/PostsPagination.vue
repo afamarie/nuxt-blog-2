@@ -1,43 +1,45 @@
+<!-- eslint-disable vue/no-lone-template -->
 <template>
   <UPagination
     v-model:page="page"
     :total="total"
     :items-per-page="itemsPerPage"
-    @update:page="$emit('update:page', $event)"
+    :to="to"
+    variant="soft"
+    active-color="primary"
+    :ui="{ list: 'gap-2' }"
   >
-    <template #first>
-      <span />
-    </template>
-    <template #last>
-      <span />
-    </template>
     <template
       v-if="page === 1"
       #prev
     >
-      <span />
+      <template />
     </template>
     <template
       v-if="page*itemsPerPage >= total"
       #next
     >
-      <span />
+      <template />
     </template>
   </UPagination>
 </template>
 
 <script setup lang="ts">
+const props = defineProps<({
+  total: number
+  itemsPerPage: number
+  hash?: string
+})>()
+
 const page = defineModel<number>({
   default: 1,
   type: Number,
 })
 
-defineProps<({
-  total: number
-  itemsPerPage: number
-})>()
-
-defineEmits<{
-  (e: 'update:page', page: number): void
-}>()
+function to(page: number) {
+  return {
+    query: { page },
+    hash: props.hash ? '#' + props?.hash : null,
+  }
+}
 </script>
