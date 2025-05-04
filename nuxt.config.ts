@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   components: true,
   devtools: { enabled: true },
   app: {
-    // baseURL: '/blog',
+    baseURL: '/blog',
   },
   css: ['~/assets/style/main.css'],
   ui: {
