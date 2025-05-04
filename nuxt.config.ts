@@ -4,9 +4,6 @@ export default defineNuxtConfig({
   modules: ['@nuxt/ui', '@nuxt/image', '@nuxtjs/i18n'],
   components: true,
   devtools: { enabled: true },
-  app: {
-    baseURL: '/nuxt-blog/',
-  },
   css: ['~/assets/style/main.css'],
   ui: {
     colorMode: false,
@@ -28,7 +25,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-11-01',
   nitro: {
-    preset: 'github_pages',
+    preset: 'netlify',
     prerender: {
       crawlLinks: false,
     },
