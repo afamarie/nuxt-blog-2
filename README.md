@@ -1,3 +1,11 @@
+# Blog ✍️
+
+# Vue3, Nuxt, TypeScript, i18n, NuxtUI, Tailwind
+
+## Деплой
+
+[netlify](https://harmonious-gnome-a964df.netlify.app/)
+
 # Nuxt Minimal Starter
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.

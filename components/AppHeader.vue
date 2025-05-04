@@ -8,7 +8,7 @@
         <NuxtImg
           src="/images/logo.png"
           alt="Логотип QTim"
-          format="avif, webp"
+          format="avif,webp"
           densities="x1 x2"
           width="84"
           height="24"

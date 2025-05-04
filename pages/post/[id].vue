@@ -8,6 +8,8 @@
         class="[&>img]:bg-primary-400 [&>img]:w-full [&>img]:max-h-[700px] [&>img]:object-cover"
         :src="post?.image"
         :alt="post?.title"
+        format="avif,webp"
+        densities="x1 x2"
         width="1216"
         height="700"
       />

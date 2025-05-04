@@ -12,7 +12,9 @@
         :src="post?.image"
         width="280"
         height="280"
-        format="avif, webp"
+        format="avif,webp"
+        densities="x1 x2"
+        loading="lazy"
         :alt="post?.title"
       />
       <h3 class="text-xl leading-6 line-clamp-3 mt-3 md:mt-6">

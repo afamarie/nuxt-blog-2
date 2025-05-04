@@ -53,5 +53,11 @@ export default defineNuxtConfig({
     format: ['webp', 'avif'],
     provider: 'netlify',
     dir: 'public',
+    screens: {
+      xs: 320,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+    },
   },
 })
