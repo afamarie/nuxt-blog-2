@@ -2,6 +2,7 @@
 
 export default defineNuxtConfig({
   modules: ['@nuxt/ui', '@nuxt/image', '@nuxtjs/i18n'],
+  ssr: true,
   components: true,
   devtools: { enabled: true },
   css: ['~/assets/style/main.css'],
@@ -50,7 +51,7 @@ export default defineNuxtConfig({
     inject: true,
     quality: 80,
     format: ['webp', 'avif'],
-    propvider: 'netlify',
+    provider: 'netlify',
     dir: 'public',
   },
 })
