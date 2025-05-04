@@ -27,23 +27,24 @@
 import type { Post } from '~/types'
 
 const { id } = useRoute().params
-const { data: post } = await useFetch<Post>(`/api/posts/${id}`)
-
-if (!id || !post.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Not Found' })
-}
+const post = ref<Post | null>()
 
 definePageMeta({
   name: 'post',
 })
 
-useHead({
-  title: post.value?.title,
-  meta: [
-    {
-      name: 'description',
-      content: post.value?.preview,
-    },
-  ],
+watchEffect(() => {
+  const { data } = useLazyFetch<Post>(`/api/posts/${id}`)
+  post.value = data.value || null
+
+  useHead({
+    title: post.value?.title,
+    meta: [
+      {
+        name: 'description',
+        content: post.value?.preview,
+      },
+    ],
+  })
 })
 </script>

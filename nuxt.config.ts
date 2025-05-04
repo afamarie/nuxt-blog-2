@@ -5,6 +5,9 @@ export default defineNuxtConfig({
   ssr: true,
   components: true,
   devtools: { enabled: true },
+  app: {
+    // baseURL: '/blog',
+  },
   css: ['~/assets/style/main.css'],
   ui: {
     colorMode: false,

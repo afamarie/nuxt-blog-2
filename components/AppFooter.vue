@@ -128,7 +128,7 @@ const business: FooterLink[] = [
   {
     id: '3',
     name: 'Privacy Policy',
-    url: '/policy',
+    url: '#',
   },
 ]
 

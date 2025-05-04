@@ -37,8 +37,8 @@
 <script setup lang="ts">
 import type { Post } from '~/types'
 
-const { data: posts } = await useFetch<Post[]>('/api/posts/all')
-const total = posts.value?.length || 0
+const posts = ref<Post[]>()
+const total = ref<number>(0)
 const itemsPerPage = 8
 const title = 'Articles'
 
@@ -55,6 +55,12 @@ const page = computed<number>({
   set(v: number) {
     useRouter().push({ query: { page: v }, hash: '#posts-list' })
   },
+})
+
+watchEffect(() => {
+  const { data } = useFetch<Post[]>('/api/posts/all')
+  posts.value = data.value || []
+  total.value = posts.value.length
 })
 
 definePageMeta({
