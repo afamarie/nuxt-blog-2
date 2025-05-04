@@ -2,7 +2,6 @@
 
 export default defineNuxtConfig({
   modules: ['@nuxt/ui', '@nuxt/image', '@nuxtjs/i18n'],
-  ssr: true,
   components: true,
   devtools: { enabled: true },
   app: {
