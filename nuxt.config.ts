@@ -2,7 +2,6 @@
 
 export default defineNuxtConfig({
   modules: ['@nuxt/ui', '@nuxt/image', '@nuxtjs/i18n'],
-  ssr: true,
   components: true,
   devtools: { enabled: true },
   css: ['~/assets/style/main.css'],
@@ -25,12 +24,6 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: '2024-11-01',
-  nitro: {
-    preset: 'netlify',
-    prerender: {
-      crawlLinks: false,
-    },
-  },
   i18n: {
     locales: [
       { code: 'en', language: 'en-US', name: 'English' },
@@ -51,7 +44,6 @@ export default defineNuxtConfig({
     inject: true,
     quality: 80,
     format: ['webp', 'avif'],
-    provider: 'netlify',
     dir: 'public',
     screens: {
       xs: 320,

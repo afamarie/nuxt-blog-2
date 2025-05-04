@@ -39,6 +39,7 @@
 import type { Post } from '~/types'
 
 const { data: posts } = await useFetch<Post[]>('/api/posts/all')
+const page = ref<number>(Number(useRoute().query?.page) || 1)
 const total = posts.value?.length || 0
 const itemsPerPage = 8
 const title = 'Articles'
@@ -47,15 +48,6 @@ const paginatedPosts = computed<Post[]>(() => {
   const start = (page.value - 1) * itemsPerPage
   const end = start + itemsPerPage
   return posts.value?.slice(start, end) || []
-})
-
-const page = computed<number>({
-  get() {
-    return Number(useRoute().query?.page) || 1
-  },
-  set(value: number) {
-    return value
-  },
 })
 
 definePageMeta({
