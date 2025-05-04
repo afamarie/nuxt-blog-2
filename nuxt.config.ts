@@ -50,5 +50,7 @@ export default defineNuxtConfig({
     inject: true,
     quality: 80,
     format: ['webp', 'avif'],
+    propvider: 'netlify',
+    dir: 'public',
   },
 })
