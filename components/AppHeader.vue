@@ -6,7 +6,7 @@
         :to="{ name: 'home' }"
       >
         <NuxtImg
-          src="/images/logo.png"
+          src="~/images/logo.png"
           alt="Логотип QTim"
           format="avif,webp"
           densities="x1 x2"
