@@ -28,6 +28,9 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: '2024-11-01',
+  nitro: {
+    preset: 'netlify',
+  },
   i18n: {
     locales: [
       { code: 'en', language: 'en-US', name: 'English' },
