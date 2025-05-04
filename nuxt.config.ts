@@ -10,7 +10,9 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/': { prerender: true },
-    '/policy': { static: true },
+    '/en': { prerender: true },
+    '/post/**': { prerender: true },
+    '/en/post/**': { prerender: true },
     '/_nuxt/**': {
       headers: {
         'Cache-Control': 'public, max-age=31536000, immutable',
@@ -24,6 +26,9 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: '2024-11-01',
+  nitro: {
+    preset: 'netlify',
+  },
   i18n: {
     locales: [
       { code: 'en', language: 'en-US', name: 'English' },

@@ -5,7 +5,7 @@
         class="block"
         :to="{ name: 'home' }"
       >
-        <NuxtImg
+        <NuxtPicture
           src="/images/logo.png"
           alt="Логотип QTim"
           format="avif,webp"
