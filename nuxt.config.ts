@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   components: true,
   devtools: { enabled: true },
   app: {
-    baseURL: '/nuxt-blog/',
+    baseURL: '/nuxt-blog-2/',
   },
   css: ['~/assets/style/main.css'],
   ui: {
@@ -32,7 +32,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-11-01',
   nitro: {
-    preset: 'gh-pages',
+    preset: 'github_pages',
   },
   i18n: {
     locales: [
