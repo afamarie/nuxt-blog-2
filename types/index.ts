@@ -1,10 +1,7 @@
 interface Post {
-  id: string
-  createdAt: string
+  id: number
   title: string
-  preview: string
-  image: string
-  description: string
+  body: string
 }
 
 interface FooterLink {

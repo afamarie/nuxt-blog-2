@@ -1,15 +1,14 @@
 <template>
-  <footer class="app-footer pt-12 lg:pt-33 pb-7.5 bg-secondary-400">
+  <footer class="app-footer pt-12 lg:pt-33 pb-7.5 bg-secondary">
     <UContainer class="grid md:grid-cols-3 gap-8 md:gap-y-10">
       <p class="md:col-span-2">
-        Is there a project?
+        Got a story?
       </p>
       <NuxtLink
-        class="md:col-span-2 text-6xl md:text-8xl lg:text-[112px] leading-none underline decoration-1 underline-offset-[0.75rem] hover:text-lilac transition"
-        to="https://qtim.pro/"
-        target="_blank"
-      >Let’s work together</NuxtLink>
-      <address class="not-italic md:pt-3 md:col-span-1 md:max-w-38">
+        class="self-start md:col-span-2 text-6xl md:text-8xl lg:text-[112px] leading-none underline decoration-1 underline-offset-[0.75rem] hover:text-muted transition"
+        to="#"
+      >Become an author!</NuxtLink>
+      <address class="not-italic md:pt-3 md:col-span-1 md:self-center">
         <ul class="grid gap-4 md:gap-7">
           <li
             v-for="address in addresses"
@@ -26,13 +25,12 @@
                 <NuxtLink
                   v-if="contact.link"
                   :to="contact.link"
-                  target="_blank"
-                  class="inline-block hover:[&>.name]:underline hover:[&>.icon]:bg-lilac"
+                  class="inline-block hover:[&>.name]:underline hover:[&>.icon]:bg-muted"
                 >
                   <span class="name decoration-1">{{ contact.name }}</span>
                   <span
                     v-if="contact.icon"
-                    class="icon flex items-center justify-center mt-2 size-8 bg-primary rounded-full transition-colors"
+                    class="icon flex items-center justify-center mt-2 size-8 bg-primary text-secondary rounded-full transition-colors"
                   >
                     <UIcon
                       class="size-3"
@@ -55,10 +53,11 @@
               class="max-md:mt-3"
             >
               <ULink
-                class="underline decoration-1 underline-offset-[0.25rem] hover:text-lilac transition"
+                class="underline decoration-1 underline-offset-[0.25rem] hover:text-muted transition"
                 :to="link.url"
                 target="_blank"
-              >{{ link.name }}</ULink>
+              >{{ link.name }}
+              </ULink>
             </li>
           </ul>
         </li>
@@ -70,7 +69,7 @@
               class="max-md:mt-3"
             >
               <NuxtLinkLocale
-                class="underline decoration-1 underline-offset-[0.25rem] hover:text-lilac transition"
+                class="underline decoration-1 underline-offset-[0.25rem] hover:text-muted transition"
                 :to="link.url"
                 target="_blank"
               >
@@ -80,13 +79,12 @@
           </ul>
         </li>
         <li class="flex md:relative md:top-7.5 md:order-2 md:col-start-2 md:aspect-[2/1]">
-          <ULink
-            to="https://qtim.pro/"
-            target="_blank"
-            class="flex-grow mt-10 md:mt-16 text-ellipsis leading-none text-center px-10 py-4 rounded-3xl md:content-end md:p-7.5 text-3xl lg:text-[2rem] md:w-full md:h-full bg-primary hover:bg-lightblack text-white hover:text-lilac-400 md:rounded-t-full"
+          <NuxtLinkLocale
+            to="#"
+            class="flex-grow mt-10 md:mt-16 text-ellipsis leading-none text-center px-10 py-4 rounded-3xl md:content-end md:p-7.5 text-3xl lg:text-[2rem] md:w-full md:h-full text-inverted bg-primary hover:bg-inverted hover:scale-105 md:rounded-t-full transition"
           >
             Go
-          </ULink>
+          </NuxtLinkLocale>
         </li>
       </ul>
     </UContainer>
@@ -110,7 +108,7 @@ const social: FooterLink[] = [
   {
     id: '3',
     name: 'Telegram',
-    url: 'https://t.me/qtim71',
+    url: 'https://t.me/',
   },
 ]
 
@@ -138,33 +136,22 @@ const addresses: Address[] = [
     name: 'For all questions',
     contacts: [
       {
-        name: '+7 (920) 278—00—68',
-        link: 'tel:79202780068',
+        name: '+0 (000) 000—00—00',
+        link: 'tel:0000000000',
       },
       {
-        name: 'qtim@agency.com',
-        link: 'mailto:qtim@agency.com',
+        name: 'email@email.com',
+        link: 'mailto:email@email.com',
       },
     ],
   },
   {
     id: '2',
-    name: 'Office in Russia',
+    name: 'Editors Office',
     contacts: [
       {
-        name: '139 Ruben Station Lake Drew, NM 52678',
-        link: 'https://maps.app.goo.gl/A65SXs8BPStroRfd6',
-        icon: 'custom-location',
-      },
-    ],
-  },
-  {
-    id: '3',
-    name: 'Office in Dubai',
-    contacts: [
-      {
-        name: '139 Ruben Station Lake Drew, NM 52678',
-        link: 'https://maps.app.goo.gl/A65SXs8BPStroRfd6',
+        name: 'Fascination street 89',
+        link: 'https://maps.app.goo.gl/UyJqV8vqdP3fNwEY8',
         icon: 'custom-location',
       },
     ],

@@ -3,7 +3,7 @@ import type { Post } from '~/types/index'
 
 export default defineEventHandler(async () => {
   try {
-    const posts = await $fetch<Post[]>(url)
+    const { posts } = await $fetch<{ posts: Post[] }>(url)
     return posts
   }
   catch {

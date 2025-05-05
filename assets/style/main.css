@@ -4,14 +4,16 @@
 @font-face {
     font-style: normal;
     font-weight: 400;
-    font-family: 'TT Commons';
+    font-family: 'Inter';
   
     font-display: swap;
-    src: url('~/assets/fonts/tt-commons-regular.woff2') format('woff2');
+    src: url('~/assets/fonts/inter-regular.woff') format('woff'),
+         url('~/assets/fonts/inter-regular.woff2') format('woff2');
 }
 
 @theme static {
     /* Colors */
+    --white: #ffff;
     --black: #101010;
     --lightblack: #232323;
     --grey: #868686;
@@ -30,24 +32,45 @@
     --color-lightgrey: var(--lightgrey);
 
     --ui-primary: var(--black);
+    --ui-secondary: var(--lightlilac);
     --ui-success: var(--lime);
     --ui-info: var(--blue);
 
     --ui-bg-elevated: var(--lightgrey);
     --ui-bg-accented: var(--mutedgrey);
+    --ui-bg-inverted: var(--lightblack);
 
     --ui-text: var(--black);
     --ui-text-muted: var(--lightblack);
     --ui-text-highlighted: var(--grey);
-    --ui-border: var(--lightgrey);
+    --ui-text-inverted: var(--lightgrey);
+    
+    --ui-border-accented: var(--lightgrey);
 
     /* Sizes */
     --ui-container: 90rem;
 
     /* Font */
-    --font-sans: 'TT Commons';
+    --font-sans: 'Inter';
 }
 
 :root {
     scroll-behavior: smooth;
+}
+
+.dark {
+    --ui-primary: var(--white);
+    --ui-secondary: var(--lilac);
+
+    --ui-bg: var(--black);
+    --ui-bg-elevated: var(--lightblack);
+    --ui-bg-accented: var(--black);
+    --ui-bg-inverted: var(--lightgrey);
+
+    --ui-text: var(--white);
+    --ui-text-muted: var(--mutedgrey);
+    --ui-text-highlighted: var(--grey);
+    --ui-text-inverted: var(--lightblack);
+
+    --ui-border-accented: var(--lightblack);
 }

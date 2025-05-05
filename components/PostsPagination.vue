@@ -4,8 +4,6 @@
     v-model:page="page"
     :total="total"
     :items-per-page="itemsPerPage"
-    variant="soft"
-    active-color="primary"
     :ui="{ list: 'gap-2' }"
   >
     <template
@@ -24,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<({
+defineProps<({
   total: number
   itemsPerPage: number
 })>()

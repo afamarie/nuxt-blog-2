@@ -27,8 +27,8 @@ export default defineAppConfig({
     pagination: {
       slots: {
         item: 'p-3 rounded-xl text-md cursor-pointer',
-        prev: 'p-3 rounded-xl text-md bg-white border-1 border-mutedgrey cursor-pointer',
-        next: 'p-3 rounded-xl text-md bg-white border-1 border-mutedgrey cursor-pointer',
+        prev: 'p-3 rounded-xl text-md cursor-pointer',
+        next: 'p-3 rounded-xl text-md cursor-pointer',
         last: 'hidden',
         first: 'hidden',
       },

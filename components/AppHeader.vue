@@ -6,12 +6,12 @@
         :to="{ name: 'home' }"
       >
         <NuxtPicture
-          src="/images/logo.png"
-          alt="Логотип QTim"
+          :src="`images/logo-${mode === 'dark' ? 'dark' : 'light'}.png`"
+          alt="Логотип Blog"
           format="avif,webp"
           densities="x1 x2"
-          width="84"
-          height="24"
+          width="108"
+          height="50"
         />
         <span class="sr-only">Homepage</span>
       </NuxtLinkLocale>
@@ -19,17 +19,15 @@
         <ul class="flex flex-wrap justify-end gap-x-6 lg:gap-x-14 gap-y-6 text-xl leading-none">
           <li>
             <ULink
-              to="https://qtim.pro/"
+              to="#"
               class="text-primary hover:text-highlighted"
-              target="_blank"
-            >Works</ULink>
+            >Special</ULink>
           </li>
           <li>
             <ULink
-              to="https://qtim.pro/"
+              to="#"
               class="text-primary hover:text-highlighted"
-              target="_blank"
-            >About</ULink>
+            >Stories</ULink>
           </li>
         </ul>
       </nav>
@@ -52,15 +50,20 @@
           />
         </UDropdownMenu>
         <UButton
+          :icon="mode === 'dark' ? 'i-lucide-moon' : 'i-lucide-sun'"
+          class="p-3.5 rounded-full"
+          variant="ghost"
+          @click="mode = mode === 'dark' ? 'light' : 'dark'"
+        />
+        <UButton
           class="text-xl leading-none"
           as="nuxt-link"
-          to="https://qtim.pro/"
-          target="_blank"
+          to="#"
           :ui="{
             base: 'py-4 px-8 rounded-full',
           }"
         >
-          Let’s work
+          Log in
         </UButton>
       </div>
     </UContainer>
@@ -69,9 +72,11 @@
 
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
+import { useColorMode } from '@vueuse/core'
 
 const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
+const mode = useColorMode()
 
 const availableLocales = computed<DropdownMenuItem[]>(() =>
   locales.value.map(loc => ({

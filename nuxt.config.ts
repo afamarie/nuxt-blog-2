@@ -6,11 +6,11 @@ export default defineNuxtConfig({
   components: true,
   devtools: { enabled: true },
   app: {
-    baseURL: '/blog',
+    baseURL: '/nuxt-blog/',
   },
   css: ['~/assets/style/main.css'],
   ui: {
-    colorMode: false,
+    colorMode: true,
   },
   routeRules: {
     '/': { prerender: true },
@@ -32,7 +32,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-11-01',
   nitro: {
-    preset: 'netlify',
+    preset: 'gh-pages',
   },
   i18n: {
     locales: [
