@@ -33,6 +33,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   nitro: {
     preset: 'github_pages',
+    prerender: {
+      crawlLinks: true,
+    },
   },
   i18n: {
     locales: [
