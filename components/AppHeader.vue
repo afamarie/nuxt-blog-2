@@ -5,14 +5,14 @@
         class="block"
         :to="{ name: 'home' }"
       >
-        <NuxtPicture
-          :src="`images/logo-${mode === 'dark' ? 'dark' : 'light'}.png`"
+        <!-- <NuxtPicture
+          :src="logo"
           alt="Логотип Blog"
           format="avif,webp"
           densities="x1 x2"
           width="108"
           height="50"
-        />
+        /> -->
         <span class="sr-only">Homepage</span>
       </NuxtLinkLocale>
       <nav class="ml-auto">
@@ -38,7 +38,7 @@
             itemLeadingIcon: 'size-6',
           }"
         >
-          <UButton
+          <!-- <UButton
             variant="outline"
             :icon="`i-custom-${currentLocale.code}`"
             :label="currentLocale.name"
@@ -47,14 +47,14 @@
               base: 'p-3.5 rounded-full ring-mutedgrey',
               leadingIcon: 'size-6',
             }"
-          />
+          /> -->
         </UDropdownMenu>
-        <UButton
+        <!-- <UButton
           :icon="mode === 'dark' ? 'i-lucide-moon' : 'i-lucide-sun'"
           class="p-3.5 rounded-full"
           variant="ghost"
           @click="mode = mode === 'dark' ? 'light' : 'dark'"
-        />
+        /> -->
         <UButton
           class="text-xl leading-none"
           as="nuxt-link"
@@ -73,10 +73,12 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
 import { useColorMode } from '@vueuse/core'
+import dark from '~/public/images/logo-dark.png'
+import light from '~/public/images/logo-light.png'
 
 const { locale, locales } = useI18n()
-const switchLocalePath = useSwitchLocalePath()
 const mode = useColorMode()
+const switchLocalePath = useSwitchLocalePath()
 
 const availableLocales = computed<DropdownMenuItem[]>(() =>
   locales.value.map(loc => ({
@@ -86,6 +88,8 @@ const availableLocales = computed<DropdownMenuItem[]>(() =>
     to: switchLocalePath(loc.code),
   })),
 )
+
+const logo = computed(() => mode.value === 'dark' ? dark : light)
 
 const currentLocale = computed(() =>
   locales.value.find(l => l.code === locale.value) ?? { code: 'ru', name: 'Русский' },

@@ -8,60 +8,58 @@
         Blog posts list
       </h2>
       <ul
-        v-if="posts && posts.length > 0"
         id="posts-list"
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-x-8 lg:gap-y-1 pt-6 pb-2 lg:pt-18"
       >
         <li
-          v-for="post in paginatedPosts"
+          v-for="post in posts"
           :key="post.id"
         >
-          <PostCard
-            :post="post"
-          />
+          <PostCard :post="post" />
+        </li>
+        <li
+          v-if="pending"
+          class="col-span-full"
+        >
+          <USkeleton />
         </li>
       </ul>
-      <p v-else>
-        No articles yet
-      </p>
-      <PostsPagination
-        v-if="posts && posts.length > 0"
-        v-model="page"
-        :items-per-page="itemsPerPage"
+      <!-- eslint-disable vue/no-lone-template -->
+      <UPagination
+        v-model:page="page"
         :total="total"
-      />
+        :items-per-page="itemsPerPage"
+        :ui="{ list: 'gap-2' }"
+        :to="to"
+      >
+        <template
+          v-if="page === 1"
+          #prev
+        >
+          <template />
+        </template>
+        <template
+          v-if="page*itemsPerPage >= total"
+          #next
+        >
+          <template />
+        </template>
+      </UPagination>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { Post } from '~/types'
-
-const posts = ref<Post[]>()
-const total = ref<number>(0)
-const itemsPerPage = 8
 const title = 'Articles'
+const itemsPerPage = 8
+const { page, total, posts, pending, error } = useFetchPosts(itemsPerPage)
 
-const paginatedPosts = computed<Post[]>(() => {
-  const start = (page.value - 1) * itemsPerPage
-  const end = start + itemsPerPage
-  return posts.value?.slice(start, end) || []
-})
-
-const page = computed<number>({
-  get() {
-    return Number(useRoute().query?.page) || 1
-  },
-  set(v: number) {
-    useRouter().push({ query: { page: v }, hash: '#posts-list' })
-  },
-})
-
-watchEffect(() => {
-  const { data } = useFetch<Post[]>('/api/posts/all')
-  posts.value = data.value || []
-  total.value = posts.value.length
-})
+const to = (page: number) => {
+  return {
+    query: { page },
+    hash: '#posts-list',
+  }
+}
 
 definePageMeta({
   name: 'home',

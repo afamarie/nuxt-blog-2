@@ -24,27 +24,19 @@
 </template>
 
 <script setup lang="ts">
-import type { Post } from '~/types'
-
-const { id } = useRoute().params
-const post = ref<Post | null>()
+const { post, pending, error } = useFetchPost()
 
 definePageMeta({
   name: 'post',
 })
 
-watchEffect(() => {
-  const { data } = useLazyFetch<Post>(`/api/posts/${id}`)
-  post.value = data.value || null
-
-  useHead({
-    title: post.value?.title,
-    meta: [
-      {
-        name: 'description',
-        content: post.value?.title,
-      },
-    ],
-  })
+useHead({
+  title: post.value?.title,
+  meta: [
+    {
+      name: 'description',
+      content: post.value?.title,
+    },
+  ],
 })
 </script>

@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
+
   modules: ['@nuxt/ui', '@nuxt/image', '@nuxtjs/i18n'],
   ssr: true,
   components: true,
@@ -11,6 +12,11 @@ export default defineNuxtConfig({
   css: ['~/assets/style/main.css'],
   ui: {
     colorMode: true,
+  },
+  runtimeConfig: {
+    public: {
+      apiUrl: process.env.NUXT_PUBLIC_API_URL,
+    },
   },
   routeRules: {
     '/': { prerender: true },
@@ -33,9 +39,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   nitro: {
     preset: 'netlify',
-    prerender: {
-      crawlLinks: true,
-    },
   },
   i18n: {
     locales: [

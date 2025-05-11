@@ -1,9 +1,10 @@
 import url from '~/server/url'
 import type { Post } from '~/types/index'
 
-export default defineEventHandler(async () => {
+export default defineEventHandler<Post | unknown>(async () => {
   try {
-    const { posts } = await $fetch<{ posts: Post[] }>(url)
+    const resp = await fetch(url)
+    const { posts } = await resp.json()
     return posts
   }
   catch {

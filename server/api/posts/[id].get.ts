@@ -12,8 +12,8 @@ export default defineEventHandler<Post | unknown>(async (event) => {
   }
 
   try {
-    const post = await $fetch<Post>(`${url}${id}`)
-    return post
+    const post = await fetch(`${url}${id}`)
+    return await post.json()
   }
   catch {
     throw createError({
