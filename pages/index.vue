@@ -52,7 +52,7 @@
 <script setup lang="ts">
 const title = 'Articles'
 const itemsPerPage = 8
-const { page, total, posts, pending, error } = useFetchPosts(itemsPerPage)
+const { page, total, posts, pending } = useFetchPosts(itemsPerPage)
 
 const to = (page: number) => {
   return {

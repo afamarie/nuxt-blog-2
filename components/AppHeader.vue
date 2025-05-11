@@ -32,13 +32,13 @@
         </ul>
       </nav>
       <div class="flex items-center gap-4">
-        <UDropdownMenu
+        <!-- <UDropdownMenu
           :items="availableLocales"
           :ui="{
             itemLeadingIcon: 'size-6',
           }"
         >
-          <!-- <UButton
+          <UButton
             variant="outline"
             :icon="`i-custom-${currentLocale.code}`"
             :label="currentLocale.name"
@@ -47,8 +47,8 @@
               base: 'p-3.5 rounded-full ring-mutedgrey',
               leadingIcon: 'size-6',
             }"
-          /> -->
-        </UDropdownMenu>
+          />
+        </UDropdownMenu> -->
         <!-- <UButton
           :icon="mode === 'dark' ? 'i-lucide-moon' : 'i-lucide-sun'"
           class="p-3.5 rounded-full"
@@ -71,27 +71,27 @@
 </template>
 
 <script setup lang="ts">
-import type { DropdownMenuItem } from '@nuxt/ui'
-import { useColorMode } from '@vueuse/core'
-import dark from '~/public/images/logo-dark.png'
-import light from '~/public/images/logo-light.png'
+// import type { DropdownMenuItem } from '@nuxt/ui'
+// import { useColorMode } from '@vueuse/core'
+// import dark from '~/public/images/logo-dark.png'
+// import light from '~/public/images/logo-light.png'
 
-const { locale, locales } = useI18n()
-const mode = useColorMode()
-const switchLocalePath = useSwitchLocalePath()
+// const { locale, locales } = useI18n()
+// const mode = useColorMode()
+// const switchLocalePath = useSwitchLocalePath()
 
-const availableLocales = computed<DropdownMenuItem[]>(() =>
-  locales.value.map(loc => ({
-    label: loc.name ?? loc.code,
-    icon: `i-custom-${loc.code}`,
-    type: 'link',
-    to: switchLocalePath(loc.code),
-  })),
-)
+// const availableLocales = computed<DropdownMenuItem[]>(() =>
+//   locales.value.map(loc => ({
+//     label: loc.name ?? loc.code,
+//     icon: `i-custom-${loc.code}`,
+//     type: 'link',
+//     to: switchLocalePath(loc.code),
+//   })),
+// )
 
-const logo = computed(() => mode.value === 'dark' ? dark : light)
+// const logo = computed(() => mode.value === 'dark' ? dark : light)
 
-const currentLocale = computed(() =>
-  locales.value.find(l => l.code === locale.value) ?? { code: 'ru', name: 'Русский' },
-)
+// const currentLocale = computed(() =>
+//   locales.value.find(l => l.code === locale.value) ?? { code: 'ru', name: 'Русский' },
+// )
 </script>

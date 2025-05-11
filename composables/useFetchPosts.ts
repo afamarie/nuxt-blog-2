@@ -2,7 +2,15 @@ import type { Post } from '~/types'
 
 export const useFetchPosts = (itemsPerPage: number = 8) => {
   const url = useRuntimeConfig().public.apiUrl
-  const page = ref<number>(useRoute().query.page ? Number(useRoute().query.page) : 1)
+
+  const page = computed<number>({
+    get() {
+      return Number(useRoute().query.page) || 1
+    },
+    set(value) {
+      return value
+    },
+  })
 
   const { data, pending, error, refresh } = useLazyAsyncData(
     () =>
