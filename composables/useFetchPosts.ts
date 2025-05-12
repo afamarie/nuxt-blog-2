@@ -26,7 +26,7 @@ export const useFetchPosts = (itemsPerPage: number = 8) => {
   )
 
   const posts = computed(() => data.value?.posts ?? [])
-  const total = computed(() => data.value?.total ?? 0)
+  const total = computed(() => 36)
 
   return {
     page,
