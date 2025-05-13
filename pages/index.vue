@@ -31,6 +31,8 @@
         :items-per-page="itemsPerPage"
         :ui="{ list: 'gap-2' }"
         :to="to"
+        :default-page="1"
+        :disabled="pending"
       >
         <template
           v-if="page === 1"
@@ -39,7 +41,7 @@
           <template />
         </template>
         <template
-          v-if="page*itemsPerPage >= total"
+          v-if="page * itemsPerPage >= total"
           #next
         >
           <template />
@@ -52,14 +54,16 @@
 <script setup lang="ts">
 const title = 'Articles'
 const itemsPerPage = 8
-const { page, total, posts, pending } = useFetchPosts(itemsPerPage)
+const page = ref<number>(1)
 
-const to = (page: number) => {
-  return {
-    query: { page },
-    hash: '#posts-list',
-  }
-}
+const { posts, total, pending, error } = useFetchPosts(page, itemsPerPage)
+
+const to = (pageNumber: number) => ({
+  query: { page: pageNumber },
+  hash: '#posts-list',
+})
+
+useQueryPagination(page)
 
 definePageMeta({
   name: 'home',

@@ -13,7 +13,6 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "netlify-cli": "^21.0.0",
     "nuxt": "^3.16.2",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
@@ -23,6 +22,7 @@
     "@nuxt/image": "^1.10.0",
     "@nuxt/ui": "^3.1.0",
     "@nuxtjs/i18n": "^9.5.3",
+    "netlify-cli": "^21.2.1",
     "sass-embedded": "^1.87.0",
     "typescript": "^5.8.3",
     "vue-tsc": "^2.2.10"

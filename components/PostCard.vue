@@ -7,7 +7,7 @@
       class="grid justify-stretch"
       :to="{ name: 'post', params: { id: post.id } }"
     >
-      <NuxtPicture
+      <!-- <NuxtPicture
         class="[&>img]:bg-primary-400 [&>img]:w-full [&>img]:aspect-square [&>img]:object-cover"
         :src="`https://picsum.photos/id/${post.id}/280/`"
         width="280"
@@ -16,7 +16,7 @@
         densities="x1 x2"
         loading="lazy"
         :alt="post?.title"
-      />
+      /> -->
       <h3 class="text-xl leading-6 line-clamp-3 mt-3 md:mt-6">
         {{ post?.title }}
       </h3>
