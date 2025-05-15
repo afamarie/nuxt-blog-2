@@ -30,11 +30,6 @@ export default defineNuxtConfig({
         'Content-Type': 'application/javascript',
       },
     },
-    '/api/**': {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-    },
   },
   compatibilityDate: '2024-11-01',
   nitro: {
@@ -61,6 +56,8 @@ export default defineNuxtConfig({
     quality: 80,
     format: ['webp', 'avif'],
     dir: 'public',
+    domains: ['picsum.photos'],
+    provider: 'none',
     screens: {
       xs: 320,
       md: 768,

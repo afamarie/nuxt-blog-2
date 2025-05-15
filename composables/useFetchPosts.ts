@@ -3,7 +3,7 @@ import type { Post } from '~/types'
 export const useFetchPosts = (page: Ref<number>, itemsPerPage: number = 8) => {
   const url = useRuntimeConfig().public.apiUrl
 
-  const { data, pending, error } = useLazyAsyncData(`posts-page-${page.value}`,
+  const { data, pending, error } = useAsyncData(`posts-page-${page.value}`,
     () =>
       $fetch<{ posts: Post[], total: number }>(url, {
         params: {
@@ -13,6 +13,8 @@ export const useFetchPosts = (page: Ref<number>, itemsPerPage: number = 8) => {
       }),
     {
       watch: [page],
+      server: true,
+      immediate: true,
     },
   )
 

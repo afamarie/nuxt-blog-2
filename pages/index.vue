@@ -24,9 +24,8 @@
           <USkeleton />
         </li>
       </ul>
-      <!-- eslint-disable vue/no-lone-template -->
       <UPagination
-        v-model:page="page"
+        :page="page"
         :total="total"
         :items-per-page="itemsPerPage"
         :ui="{ list: 'gap-2' }"
@@ -38,13 +37,13 @@
           v-if="page === 1"
           #prev
         >
-          <template />
+          <span v-show="false" />
         </template>
         <template
           v-if="page * itemsPerPage >= total"
           #next
         >
-          <template />
+          <span v-show="false" />
         </template>
       </UPagination>
     </section>
@@ -53,17 +52,16 @@
 
 <script setup lang="ts">
 const title = 'Articles'
-const itemsPerPage = 8
-const page = ref<number>(1)
 
+const itemsPerPage = 8
+const route = useRoute()
+const page = computed<number>(() => Number(route.query.page ?? 1))
 const { posts, total, pending, error } = useFetchPosts(page, itemsPerPage)
 
 const to = (pageNumber: number) => ({
   query: { page: pageNumber },
   hash: '#posts-list',
 })
-
-useQueryPagination(page)
 
 definePageMeta({
   name: 'home',

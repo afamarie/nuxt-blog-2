@@ -4,7 +4,7 @@
       {{ post?.title }}
     </h1>
     <div class="pt-8 lg:pt-22">
-      <!-- <NuxtPicture
+      <NuxtPicture
         class="[&>img]:bg-primary-400 [&>img]:w-full [&>img]:max-h-[700px] [&>img]:object-cover"
         :src="`https://picsum.photos/id/${post?.id}/1216/700`"
         :alt="post?.title"
@@ -12,7 +12,7 @@
         densities="x1 x2"
         width="1216"
         height="700"
-      /> -->
+      />
       <section class="py-6 lg:pt-18 lg:pb-20">
         <h2>About</h2>
         <p class="text-2xl leading-tight lg:text-4xl pt-4 lg:pt-8">
