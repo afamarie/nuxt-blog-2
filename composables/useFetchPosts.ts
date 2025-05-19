@@ -18,8 +18,8 @@ export const useFetchPosts = (page: Ref<number>, itemsPerPage: number = 8) => {
     },
   )
 
-  const posts = computed(() => data.value?.posts ?? [])
-  const total = computed(() => data.value?.total ?? 0)
+  const posts = computed<Post[]>(() => data.value?.posts ?? [])
+  const total = computed<number>(() => data.value?.total ?? 0)
 
   return { page, posts, total, pending, error }
 }

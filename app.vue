@@ -1,5 +1,5 @@
 <template>
-  <UApp>
+  <UApp :locale="locales[locale]">
     <NuxtLoadingIndicator />
     <NuxtRouteAnnouncer />
     <NuxtLayout>
@@ -9,13 +9,13 @@
 </template>
 
 <script setup lang="ts">
-const i18nHead = useLocaleHead()
+import * as locales from '@nuxt/ui/locale'
 
-useHead(() => ({
-  htmlAttrs: {
-    lang: i18nHead.value.htmlAttrs.lang,
-  },
-  link: [...(i18nHead.value.link || [])],
-  meta: [...(i18nHead.value.meta || [])],
-}))
+const { locale } = useI18n()
+
+const lang = computed(() => locales[locale.value].code)
+
+useHead({
+  htmlAttrs: { lang },
+})
 </script>

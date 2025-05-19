@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   components: true,
   devtools: { enabled: true },
   app: {
-    baseURL: '/nuxt-blog-2/',
+    baseURL: '/',
   },
   css: ['~/assets/style/main.css'],
   ui: {
@@ -20,20 +20,25 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/': { prerender: true },
-    '/en': { prerender: true },
-    '/post/**': { prerender: true },
-    '/en/post/**': { prerender: true },
-    '/policy': { static: true },
+    '/:lang(post/**)?': { prerender: true },
     '/_nuxt/**': {
       headers: {
-        'Cache-Control': 'public, max-age=31536000, immutable',
-        'Content-Type': 'application/javascript',
+        'cache-control': 'public, max-age=31536000, immutable',
+      },
+    },
+    '/images/**': {
+      headers: {
+        'cache-control': 'public, max-age=31536000, immutable',
       },
     },
   },
   compatibilityDate: '2024-11-01',
   nitro: {
     preset: 'netlify',
+    prerender: {
+      crawlLinks: true,
+      failOnError: false,
+    },
   },
   i18n: {
     locales: [
@@ -42,6 +47,7 @@ export default defineNuxtConfig({
     ],
     defaultLocale: 'ru',
     strategy: 'prefix_except_default',
+    baseUrl: 'https://demo-nuxt-blog.netlify.app/',
   },
   icon: {
     customCollections: [
@@ -57,7 +63,10 @@ export default defineNuxtConfig({
     format: ['webp', 'avif'],
     dir: 'public',
     domains: ['picsum.photos'],
-    provider: 'none',
+    provider: 'netlify',
+    alias: {
+      photo: 'https://picsum.photos/',
+    },
     screens: {
       xs: 320,
       md: 768,

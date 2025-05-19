@@ -5,9 +5,10 @@
     </h1>
     <div class="pt-8 lg:pt-22">
       <NuxtPicture
-        class="[&>img]:bg-primary-400 [&>img]:w-full [&>img]:max-h-[700px] [&>img]:object-cover"
-        :src="`https://picsum.photos/id/${post?.id}/1216/700`"
+        :src="`photo/id/${post?.id}/1216/700`"
         :alt="post?.title"
+        :img-attrs="{ class: 'bg-primary-400 w-full max-h-[700px]' }"
+        fit="cover"
         format="avif,webp"
         densities="x1 x2"
         width="1216"

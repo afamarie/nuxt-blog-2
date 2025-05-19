@@ -1,5 +1,6 @@
 <template>
   <UCard
+    v-if="post.id"
     class="post-card hover:-translate-y-6 group transform transition duration-300"
     as="article"
   >
@@ -8,8 +9,9 @@
       :to="{ name: 'post', params: { id: post.id } }"
     >
       <NuxtPicture
-        class="[&>img]:bg-primary-400 [&>img]:w-full [&>img]:aspect-square [&>img]:object-cover"
-        :src="`https://picsum.photos/id/${post.id}/280/`"
+        :src="`photo/id/${post.id}/280/`"
+        :img-attrs="{ class: 'bg-primary-400 w-full aspect-square' }"
+        fit="cover"
         width="280"
         height="280"
         format="avif,webp"
