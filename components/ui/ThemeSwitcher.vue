@@ -8,6 +8,9 @@
     >
       <span class="sr-only">{{ $t('accessibility.color_mode') }}</span>
     </UButton>
+    <template #fallback>
+      <USkeleton class="bg-primary-400 size-12 rounded-full" />
+    </template>
   </ClientOnly>
 </template>
 

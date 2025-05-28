@@ -15,23 +15,27 @@
       </nav>
       <div class="flex items-center gap-4 ml-auto max-lg:hidden">
         <ThemeSwitcher />
-        <UDropdownMenu
-          :items="(lang.available.value as DropdownMenuItem[])"
-          :ui="{
-            itemLeadingIcon: 'size-6',
-          }"
-        >
-          <UButton
-            variant="outline"
-            :icon="`i-custom-${lang.current.value.code}`"
-            :label="lang.current.value.name"
+        <ClientOnly>
+          <UDropdownMenu
+            :items="(lang.available.value as DropdownMenuItem[])"
             :ui="{
-              label: 'sr-only',
-              base: 'p-3.5 rounded-full ring-mutedgrey',
-              leadingIcon: 'size-6',
+              itemLeadingIcon: 'size-6',
             }"
-          />
-        </UDropdownMenu>
+          >
+            <UButton
+              variant="outline"
+              :icon="langIcon"
+              :label="$t('accessibility.lang')"
+              :ui="{
+                label: 'sr-only',
+                base: 'p-3.5 rounded-full ring-mutedgrey',
+              }"
+            />
+          </UDropdownMenu>
+          <template #fallback>
+            <USkeleton class="bg-primary-400 size-12 rounded-full" />
+          </template>
+        </ClientOnly>
         <LoginBtn />
       </div>
     </UContainer>
@@ -46,6 +50,7 @@ import ThemeSwitcher from '@/components/ui/ThemeSwitcher.vue'
 import NavLink from '@/components/ui/NavLink.vue'
 import LoginBtn from '@/components/ui/LoginBtn.vue'
 import MobileMenu from '@/components/layout/MobileMenu.vue'
+import { ClientOnly } from '#components'
 
 const lang = useLang()
 
@@ -55,4 +60,8 @@ const links = [
   { id: 'blog', name: 'blog', url: 'blog' },
   { id: 'contact', name: 'contact', url: 'contact' },
 ]
+
+const langIcon = computed<string>(() => {
+  return 'i-custom-' + lang.locale.value
+})
 </script>

@@ -8,12 +8,7 @@ export const useLang = () => {
     type: 'link',
     to: switchPath(loc.code),
     isCurrent: loc.code === locale.value,
-  })),
-  )
+  })) || [])
 
-  const current = computed(() =>
-    locales.value.find(l => l.code === locale.value) ?? { code: 'ru', name: 'Русский' },
-  )
-
-  return { available, current, switchPath }
+  return { available, locale, switchPath }
 }

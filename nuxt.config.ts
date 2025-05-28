@@ -58,8 +58,15 @@ export default defineNuxtConfig({
       { code: 'ru', language: 'ru-RU', name: 'Русский', file: 'ru.json' },
     ],
     lazy: true,
-    defaultLocale: 'ru',
+    defaultLocale: 'en',
     strategy: 'prefix_except_default',
+    detectBrowserLanguage: {
+      useCookie: true,
+      alwaysRedirect: true,
+      fallbackLocale: 'en',
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+    },
   },
   icon: {
     customCollections: [
