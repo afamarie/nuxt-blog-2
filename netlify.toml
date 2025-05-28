@@ -1,3 +1,17 @@
+[build]
+  command = "nuxt build"
+
+[dev]
+  framework = "nuxt"
+  command = "npx nuxt dev"
+  targetPort = 3000
+  autoLaunch = true
+
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 200
+  
 [images]
   remote_images = ["https://picsum.photos/.*"]
 
