@@ -5,15 +5,17 @@ interface Post {
   img: string
 }
 
-interface FooterLink {
+interface NavLink {
   id: string
   name: string
+  target?: '_self' | '_blank'
   url: string
 }
 
 interface Contact {
   name: string
-  link?: string
+  url?: string
+  target?: '_self' | '_blank'
   icon?: string
 }
 interface Address {
@@ -22,4 +24,4 @@ interface Address {
   contacts: Contact[]
 }
 
-export type { Post, FooterLink, Address }
+export type { Post, NavLink, Address }

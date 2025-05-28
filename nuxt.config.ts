@@ -4,18 +4,30 @@ export default defineNuxtConfig({
 
   modules: ['@nuxt/ui', '@nuxt/image', '@nuxtjs/i18n'],
   ssr: true,
-  components: true,
-  devtools: { enabled: true },
+  components: false,
+  devtools: { enabled: process.env.NODE_ENV !== 'production' },
   app: {
     baseURL: '/',
   },
   css: ['~/assets/style/main.css'],
+  vue: {
+    compilerOptions: {
+      whitespace: 'condense',
+    },
+  },
   ui: {
     colorMode: true,
+    fonts: false,
+    theme: {
+      colors: ['primary', 'secondary'],
+    },
   },
   runtimeConfig: {
     public: {
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
+      i18n: {
+        baseUrl: 'https://demo-nuxt-blog.netlify.app/',
+      },
     },
   },
   routeRules: {
@@ -35,19 +47,19 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   nitro: {
     preset: 'netlify',
+    compressPublicAssets: true,
     prerender: {
       crawlLinks: true,
-      failOnError: false,
     },
   },
   i18n: {
     locales: [
-      { code: 'en', language: 'en-US', name: 'English' },
-      { code: 'ru', language: 'ru-RU', name: 'Русский' },
+      { code: 'en', language: 'en-US', name: 'English', file: 'en.json' },
+      { code: 'ru', language: 'ru-RU', name: 'Русский', file: 'ru.json' },
     ],
+    lazy: true,
     defaultLocale: 'ru',
     strategy: 'prefix_except_default',
-    baseUrl: 'https://demo-nuxt-blog.netlify.app/',
   },
   icon: {
     customCollections: [
@@ -61,9 +73,9 @@ export default defineNuxtConfig({
     inject: true,
     quality: 80,
     format: ['webp', 'avif'],
-    dir: 'public',
-    domains: ['picsum.photos'],
+    dir: 'public/images',
     provider: 'netlify',
+    domains: ['picsum.photos'],
     alias: {
       photo: 'https://picsum.photos/',
     },

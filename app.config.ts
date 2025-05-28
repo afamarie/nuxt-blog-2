@@ -10,8 +10,7 @@ export default defineAppConfig({
     card: {
       slots: {
         root: 'rounded-none',
-        body: 'py-4 px-0 sm:p-0 bg-pink',
-        footer: 'py-2 sm:py-4 px-0 sm:px-0',
+        body: 'py-4 px-0 sm:p-0',
       },
       variants: {
         variant: {

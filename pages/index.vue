@@ -1,28 +1,35 @@
 <template>
   <div class="index-page">
     <h1 class="text-3xl leading-none sm:text-4xl lg:text-[84px]">
-      {{ title }}
+      {{ $t('articles') }}
     </h1>
     <section class="pb-10 lg:pb-32">
       <h2 class="sr-only">
-        Blog posts list
+        {{ $t('accessibility.blog_posts_list') }}
       </h2>
       <ul
         id="posts-list"
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-x-8 lg:gap-y-1 pt-6 pb-2 lg:pt-18"
       >
-        <li
-          v-for="post in posts"
-          :key="post.id"
-        >
-          <PostCard :post="post" />
-        </li>
-        <li
-          v-if="pending"
-          class="col-span-full"
-        >
-          <USkeleton />
-        </li>
+        <template v-if="pending">
+          <li
+            v-for="i in 4"
+            :key="'skeleton-' + i"
+          >
+            <PostCardSkeleton />
+          </li>
+        </template>
+        <template v-else>
+          <li
+            v-for="(post, i) in posts"
+            :key="post.id"
+          >
+            <PostCard
+              :post="post"
+              :is-lazy="i > 3"
+            />
+          </li>
+        </template>
       </ul>
       <UPagination
         :page="page"
@@ -51,12 +58,14 @@
 </template>
 
 <script setup lang="ts">
-const title = 'Articles'
+import PostCard from '@/components/ui/PostCard.vue'
+import PostCardSkeleton from '@/components/ui/CardSkeleton.vue'
 
 const itemsPerPage = 8
+const { t } = useI18n()
 const route = useRoute()
 const page = computed<number>(() => Number(route.query.page ?? 1))
-const { posts, total, pending, error } = useFetchPosts(page, itemsPerPage)
+const { posts, total, pending } = useFetchPosts(page, itemsPerPage)
 
 const to = (pageNumber: number) => ({
   query: { page: pageNumber },
@@ -69,11 +78,11 @@ definePageMeta({
 })
 
 useHead({
-  title: 'Articles',
+  title: t('seo.home.title'),
   meta: [
     {
       name: 'description',
-      content: 'Read articles about amazing facts',
+      content: t('seo.home.description'),
     },
   ],
 })

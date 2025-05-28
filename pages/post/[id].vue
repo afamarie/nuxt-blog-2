@@ -1,5 +1,9 @@
 <template>
-  <div class="post-page">
+  <PostPageSkeleton v-if="pending" />
+  <div
+    v-else
+    class="post-page"
+  >
     <h1 class="text-3xl leading-none sm:text-4xl lg:text-[84px]">
       {{ post?.title }}
     </h1>
@@ -15,7 +19,7 @@
         height="700"
       />
       <section class="py-6 lg:pt-18 lg:pb-20">
-        <h2>About</h2>
+        <h2>{{ $t("about") }}</h2>
         <p class="text-2xl leading-tight lg:text-4xl pt-4 lg:pt-8">
           {{ post?.body }}
         </p>
@@ -25,7 +29,8 @@
 </template>
 
 <script setup lang="ts">
-const { post, pending, error } = useFetchPost()
+const PostPageSkeleton = defineAsyncComponent(() => import('@/components/ui/PageSkeleton.vue'))
+const { post, pending } = useFetchPost()
 
 definePageMeta({
   name: 'post',

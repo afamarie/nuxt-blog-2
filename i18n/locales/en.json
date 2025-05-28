@@ -1,0 +1,30 @@
+{
+  "home": "Home",
+  "about_us": "About",
+  "blog": "Blog",
+  "contact": "Contact",
+  "login": "Log\u00a0in",
+  "articles": "Articles",
+  "about": "About",
+  "read_more": "Read more",
+  "got_a_story": "Got a\u00a0story?",
+  "become_author": "Become an\u00a0author!",
+  "questions": "For all questions",
+  "editors_office": "Editors Office",
+  "privacy_policy": "Privacy Policy",
+
+  "seo": {
+    "home": {
+      "title": "Blog. Read and Write Articles",
+      "description": "Read articles from our authors on various topics."
+    }
+  },
+  
+  "accessibility": {
+    "homepage": "Home page.",
+    "blog_posts_list": "List of articles.",
+    "open": "Open menu.",
+    "close": "Close menu.",
+    "color_mode": "Color mode."
+  }
+}

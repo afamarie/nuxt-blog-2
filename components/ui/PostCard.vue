@@ -16,21 +16,19 @@
         height="280"
         format="avif,webp"
         densities="x1 x2"
-        loading="lazy"
+        :loading="isLazy ? 'lazy' : 'eager'"
         :alt="post?.title"
       />
       <h3 class="text-xl leading-6 line-clamp-3 mt-3 md:mt-6">
         {{ post?.title }}
       </h3>
-    </NuxtLinkLocale>
-    <template #footer>
-      <NuxtLinkLocale
-        class="block text-xl text-secondary transform transition duration-300 pointer-fine:translate-y-6 pointer-fine:opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
+      <span
+        class="block py-2 sm:py-4 px-0 sm:px-0 text-xl text-secondary transform transition duration-300 pointer-fine:translate-y-6 pointer-fine:opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
         :to="{ name: 'post', params: { id: post.id } }"
       >
-        Read more
-      </NuxtLinkLocale>
-    </template>
+        {{ $t('read_more') }}
+      </span>
+    </NuxtLinkLocale>
   </UCard>
 </template>
 
@@ -39,5 +37,6 @@ import type { Post } from '~/types'
 
 defineProps<({
   post: Post
+  isLazy?: boolean
 })>()
 </script>
