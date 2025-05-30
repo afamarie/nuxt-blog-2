@@ -15,27 +15,22 @@
       </nav>
       <div class="flex items-center gap-4 ml-auto max-lg:hidden">
         <ThemeSwitcher />
-        <ClientOnly>
-          <UDropdownMenu
-            :items="(lang.available.value as DropdownMenuItem[])"
+        <UDropdownMenu
+          :items="localeItems"
+          :ui="{
+            itemLeadingIcon: 'size-6',
+          }"
+        >
+          <UButton
+            variant="outline"
+            :icon="`i-custom-${locale}`"
+            :label="$t('accessibility.lang')"
             :ui="{
-              itemLeadingIcon: 'size-6',
+              label: 'sr-only',
+              base: 'p-3.5 rounded-full ring-mutedgrey',
             }"
-          >
-            <UButton
-              variant="outline"
-              :icon="langIcon"
-              :label="$t('accessibility.lang')"
-              :ui="{
-                label: 'sr-only',
-                base: 'p-3.5 rounded-full ring-mutedgrey',
-              }"
-            />
-          </UDropdownMenu>
-          <template #fallback>
-            <USkeleton class="bg-primary-400 size-12 rounded-full" />
-          </template>
-        </ClientOnly>
+          />
+        </UDropdownMenu>
         <LoginBtn />
       </div>
     </UContainer>
@@ -44,15 +39,14 @@
 
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
-
 import LogoLink from '@/components/ui/LogoLink.vue'
 import ThemeSwitcher from '@/components/ui/ThemeSwitcher.vue'
 import NavLink from '@/components/ui/NavLink.vue'
 import LoginBtn from '@/components/ui/LoginBtn.vue'
 import MobileMenu from '@/components/layout/MobileMenu.vue'
-import { ClientOnly } from '#components'
 
-const lang = useLang()
+const { locale, locales } = useI18n()
+const switchLocalePath = useSwitchLocalePath()
 
 const links = [
   { id: 'home', name: 'home', url: 'home' },
@@ -61,7 +55,14 @@ const links = [
   { id: 'contact', name: 'contact', url: 'contact' },
 ]
 
-const langIcon = computed<string>(() => {
-  return 'i-custom-' + lang.locale.value
-})
+const localeItems = computed<DropdownMenuItem[]>(() => locales.value.map(loc => (
+  {
+    label: loc.name ?? loc.code,
+    icon: 'i-custom-' + loc.code,
+    type: 'link',
+    to: switchLocalePath(loc.code),
+  }
+)))
+
+const localeIcon = computed(() => 'i-custom-' + locale.value)
 </script>

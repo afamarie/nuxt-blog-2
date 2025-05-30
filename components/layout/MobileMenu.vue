@@ -46,19 +46,19 @@
         >
           <ul class="flex flex-wrap gap-4">
             <li
-              v-for="item in lang.available.value"
-              :key="item.label"
+              v-for="loc in locales"
+              :key="loc.code"
             >
               <UButton
                 variant="outline"
-                :icon="item.icon"
-                :label="item.label"
+                :icon="'i-custom-'+loc.code"
+                :label="loc.name"
                 :ui="{
                   label: 'sr-only',
-                  base: 'p-3 rounded-full' + (item.isCurrent ? ' bg-primary text-inverted' : ' ring-mutedgrey'),
+                  base: 'p-3 rounded-full' + (loc.code === locale ? ' bg-primary text-inverted' : ' ring-mutedgrey'),
                   leadingIcon: 'size-5',
                 }"
-                :to="item.to"
+                :to="$switchLocalePath(loc.code)"
               />
             </li>
           </ul>
@@ -81,6 +81,6 @@ defineProps<{
   links: NavLink[]
 }>()
 
+const { locale, locales } = useI18n()
 const open = ref<boolean>(false)
-const lang = useLang()
 </script>
