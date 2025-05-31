@@ -29,8 +29,8 @@ This is a multi-language website built with [Nuxt 3](https://nuxt.com) and deplo
 
 Supports two locales:
 
-- 🇷🇺 `ru` — Русский (default)
-- 🇺🇸 `en` — English
+- 🇷🇺 `ru` — Русский
+- 🇺🇸 `en` — English(default)
 
 ## 🚀 Deployment
 
