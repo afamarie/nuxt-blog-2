@@ -31,13 +31,13 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    // '/': { prerender: true },
-    // '/:lang(post/**)?': { prerender: true },
-    // '/_nuxt/**': {
-    //   headers: {
-    //     'cache-control': 'public, max-age=31536000, immutable',
-    //   },
-    // },
+    '/': { prerender: true },
+    '/:lang(post/**)?': { prerender: true },
+    '/_nuxt/**': {
+      headers: {
+        'cache-control': 'public, max-age=31536000, immutable',
+      },
+    },
     '/images/**': {
       headers: {
         'cache-control': 'public, max-age=31536000, immutable',
@@ -70,14 +70,6 @@ export default defineNuxtConfig({
     compilation: {
       strictMessage: false,
     },
-  },
-  icon: {
-    customCollections: [
-      {
-        prefix: 'custom',
-        dir: './assets/icons',
-      },
-    ],
   },
   image: {
     inject: true,

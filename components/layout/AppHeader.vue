@@ -23,13 +23,22 @@
         >
           <UButton
             variant="outline"
-            :icon="`i-custom-${locale}`"
             :label="$t('accessibility.lang')"
             :ui="{
               label: 'sr-only',
               base: 'p-3.5 rounded-full ring-mutedgrey',
             }"
-          />
+          >
+            <ClientOnly>
+              <UIcon
+                :name="localeIcon"
+                class="size-6"
+              />
+              <template #fallback>
+                <USkeleton class="bg-primary-400 size-6 rounded-full" />
+              </template>
+            </ClientOnly>
+          </UButton>
         </UDropdownMenu>
         <LoginBtn />
       </div>
@@ -55,14 +64,14 @@ const links = [
   { id: 'contact', name: 'contact', url: 'contact' },
 ]
 
-const localeItems = computed<DropdownMenuItem[]>(() => locales.value.map(loc => (
+const localeItems: DropdownMenuItem[] = locales.value.map(loc => (
   {
     label: loc.name ?? loc.code,
-    icon: 'i-custom-' + loc.code,
+    icon: 'i-circle-flags:' + loc.code,
     type: 'link',
     to: switchLocalePath(loc.code),
   }
-)))
+))
 
-const localeIcon = computed(() => 'i-custom-' + locale.value)
+const localeIcon = computed<string>(() => 'i-circle-flags:' + locale.value)
 </script>

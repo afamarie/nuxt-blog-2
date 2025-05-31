@@ -51,7 +51,7 @@
             >
               <UButton
                 variant="outline"
-                :icon="'i-custom-'+loc.code"
+                :icon="'i-circle-flags:'+loc.code"
                 :label="loc.name"
                 :ui="{
                   label: 'sr-only',

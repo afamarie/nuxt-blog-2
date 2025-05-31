@@ -163,7 +163,7 @@ const addresses: Address[] = [
       {
         name: 'Fascination street 89',
         url: 'https://www.google.com/maps',
-        icon: 'custom-location',
+        icon: 'gravity-ui:location-arrow',
         target: '_blank',
       },
     ],
